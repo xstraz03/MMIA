@@ -29,7 +29,7 @@ int main(void)
 	mess1=mess;
 	while(1)
 	{
-		if ( mess1 & 0x00000001)
+		if ( mess1 & 0x80000000)
 		{
 			HIGH;
 		}
@@ -37,7 +37,7 @@ int main(void)
 		{
 			LOW;
 		}
-		mess1 >>= 1;
+		mess1 <<= 1;
 
 	for (volatile uint32_t k = 0; k < 100000; k++) {}
 	i++;
