@@ -10,35 +10,64 @@
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
-
+# define HIGH  GPIOA->BSRR = (1<<5) // set
+# define LOW  GPIOA->BRR = (1<<5) // reset
 #include "stm32f0xx.h"
 
 int main(void)
 {
-	uint8_t pole[]={1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
-	volatile uint32_t i;
+	//uint8_t pole[]={1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
+	uint32_t mess=0b10101001110111011100101010000000;
+	uint32_t mess1;
+	uint8_t i;
 	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
 	GPIOA->MODER |= GPIO_MODER_MODER5_0;
-	i=0;
+	//i=0;
 	GPIOA->BSRR = (1<<5); // set
 
 
+	mess1=mess;
+	while(1)
+	{
+		if ( mess1 & 0x00000001)
+		{
+			HIGH;
+		}
+		else
+		{
+			LOW;
+		}
+		mess1 >>= 1;
+
+	for (volatile uint32_t k = 0; k < 100000; k++) {}
+	i++;
+	if(i==33)
+	{
+		i=0;
+		mess1=mess;
+	}
+
+	}
+
+
+
+/*
 	while(1)
 	{
 
-	//GPIOA->ODR ^= (1<<5); // toggle
-	//for (volatile uint32_t i = 0; i < 100000; i++) {}
+		//GPIOA->ODR ^= (1<<5); // toggle
+		//for (volatile uint32_t i = 0; i < 100000; i++) {}
 
 
 
-	if (pole[i]==1) GPIOA->BSRR = (1<<5); // set
+		if (pole[i]==1) GPIOA->BSRR = (1<<5); // set
 
-	if (pole[i]==0)  GPIOA->BRR = (1<<5); // reset
+		if (pole[i]==0)  GPIOA->BRR = (1<<5); // reset
 
-	i++;
-	if (i==33) i=0;
+		i++;
+		if (i==33) i=0;
 
-	for (volatile uint32_t k = 0; k < 100000; k++) {}
+		for (volatile uint32_t k = 0; k < 100000; k++) {}
 	}
-
+*/
 }
