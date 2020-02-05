@@ -15,15 +15,27 @@
 
 int main(void)
 {
-	volatile uint32_t i;
+	uint8_t pole[32]={1,0,1,0,1,0,0,1,1,1,0,1,1,1,0,1,1,1,0,0,1,0,1,0,1,0,0,0,0,0,0,0};
 
 	RCC->AHBENR |= RCC_AHBENR_GPIOAEN;
 	GPIOA->MODER |= GPIO_MODER_MODER5_0;
 
 	GPIOA->BSRR = (1<<5); // set
 
-	for(i=0;i<100000;i++)
+
+	while(1)
 	{
-		GPIOA->ODR ^= (1<<5); // toggle
+
+	//GPIOA->ODR ^= (1<<5); // toggle
+	//for (volatile uint32_t i = 0; i < 100000; i++) {}
+
+
+	{
+	if (pole(i)==1) GPIOA->BSRR = (1<<5); // set
+	else if (pole(i)==0)  GPIOA->BRR = (1<<5); // reset
+	i++;
+	if (i==32) i=0;
+	for (volatile uint32_t i = 0; i < 100000; i++) {}
 	}
+
 }
