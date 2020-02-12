@@ -81,9 +81,6 @@ void tlacitka(void)
 		}
 		old_s2 = new_s2;
 
-
-
-
 		/*
 
 		if (old_s1 && !new_s1)
@@ -96,7 +93,6 @@ void tlacitka(void)
 		 */
 
 		delay = Tick;
-
 
 	}
 
