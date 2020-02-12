@@ -1,0 +1,49 @@
+!SESSION 2020-02-12 13:56:00.970 -----------------------------------------------
+eclipse.buildId=Version 1.2.1
+java.version=1.8.0_202
+java.vendor=AdoptOpenJdk
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-02-12 14:02:03.034
+!MESSAGE Log4j initialized with config file P:\MMIA\MMIA\CV2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-02-12 14:02:07.019
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-02-12 14:02:07.659
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+!SESSION 2020-02-12 14:08:17.950 -----------------------------------------------
+eclipse.buildId=Version 1.2.1
+java.version=1.8.0_202
+java.vendor=AdoptOpenJdk
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  P:\MMIA\MMIA\CV2\.project
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 P:\MMIA\MMIA\CV2\.project
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-02-12 14:08:29.627
+!MESSAGE Log4j initialized with config file P:\MMIA\MMIA\CV2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-02-12 14:08:33.643
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-02-12 14:08:39.162
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
+
+!ENTRY org.eclipse.cdt.core 1 0 2020-02-12 14:10:54.960
+!MESSAGE Indexed 'cv01' (4 sources, 59 headers) in 1,31 sec: 2 347 declarations; 3 691 references; 0 unresolved inclusions; 1 syntax errors; 0 unresolved names (0 %)
+!SESSION 2020-02-12 14:11:34.964 -----------------------------------------------
+eclipse.buildId=Version 1.2.1
+java.version=1.8.0_202
+java.vendor=AdoptOpenJdk
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2020-02-12 14:11:44.933
+!MESSAGE Log4j initialized with config file P:\MMIA\MMIA\CV2\.metadata\.log4j.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2020-02-12 14:11:49.324
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 4 4 2020-02-12 14:11:49.933
+!MESSAGE com.st.stm32cube.ide.mcu.ide/META-INF/version/build_ref file not found, build reference will not be reported into properties
