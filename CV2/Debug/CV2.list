@@ -521,7 +521,6 @@ void tlacitka(void)
  80003a4:	4b0d      	ldr	r3, [pc, #52]	; (80003dc <tlacitka+0xdc>)
  80003a6:	601a      	str	r2, [r3, #0]
 
-
 	}
 
 	if (Tick > off_time)
