@@ -673,3 +673,738 @@ Finished building: CV6.bin
  
 Finished building: CV6.list
  
+19:01:12 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/1wire.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/1wire.d" -MT"Core/Src/1wire.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/1wire.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+In file included from ../Core/Src/main.c:26:0:
+../Core/Inc/1wire.h:19:1: error: expected ',' or ';' before 'inline'
+ inline static void _delay_us(volatile uint32_t micros)
+ ^~~~~~
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:119:6: error: 'temp' undeclared (first use in this function)
+  if (temp!=DS_ERROR) sct_value(temp_18b20,0);
+      ^~~~
+../Core/Src/main.c:119:6: note: each undeclared identifier is reported only once for each function it appears in
+At top level:
+../Core/Src/main.c:323:9: warning: always_inline function might not be inlinable [-Wattributes]
+ int16_t get_ds18b20(void)
+         ^~~~~~~~~~~
+In file included from ../Core/Src/1wire.c:10:0:
+../Core/Inc/1wire.h:19:1: error: expected ',' or ';' before 'inline'
+ inline static void _delay_us(volatile uint32_t micros)
+ ^~~~~~
+../Core/Src/1wire.c: In function 'OWReset':
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Core/Inc/1wire.h:73:17: warning: implicit declaration of function '_delay_us' [-Wimplicit-function-declaration]
+ #define DELAY_H _delay_us(510)
+                 ^
+../Core/Src/1wire.c:32:5: note: in expansion of macro 'DELAY_H'
+     DELAY_H;
+     ^~~~~~~
+make: *** [Core/Src/subdir.mk:39: Core/Src/1wire.o] Error 1
+../Core/Src/sct.c: In function 'get_ds18b20':
+../Core/Src/sct.c:18:23: error: storage class specified for parameter 'reg_values'
+ static const uint32_t reg_values[4][10] = {
+                       ^~~~~~~~~~
+../Core/Src/sct.c:18:1: error: parameter 'reg_values' is initialized
+ static const uint32_t reg_values[4][10] = {
+ ^~~~~~
+../Core/Src/sct.c:19:3: warning: braces around scalar initializer
+   {    //PCDE--------GFAB @ DIS1
+   ^
+../Core/Src/sct.c:19:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:20:5: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     0b0111000000000111 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:20:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:21:5: warning: excess elements in scalar initializer
+     0b0100000000000001 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:21:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:22:5: warning: excess elements in scalar initializer
+     0b0011000000001011 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:22:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:23:5: warning: excess elements in scalar initializer
+     0b0110000000001011 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:23:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:24:5: warning: excess elements in scalar initializer
+     0b0100000000001101 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:24:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:25:5: warning: excess elements in scalar initializer
+     0b0110000000001110 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:25:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:26:5: warning: excess elements in scalar initializer
+     0b0111000000001110 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:26:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:27:5: warning: excess elements in scalar initializer
+     0b0100000000000011 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:27:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:28:5: warning: excess elements in scalar initializer
+     0b0111000000001111 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:28:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:29:5: warning: excess elements in scalar initializer
+     0b0110000000001111 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:29:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:30:3: warning: braces around scalar initializer
+   },   {  //----PCDEGFAB---- @ DIS2 + .
+   ^
+../Core/Src/sct.c:30:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:31:5: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     0b0000111101110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:31:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:32:5: warning: excess elements in scalar initializer
+     0b0000110000010000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:32:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:33:5: warning: excess elements in scalar initializer
+     0b0000101110110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:33:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:34:5: warning: excess elements in scalar initializer
+     0b0000111010110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:34:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:35:5: warning: excess elements in scalar initializer
+     0b0000110011010000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:35:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:36:5: warning: excess elements in scalar initializer
+     0b0000111011100000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:36:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:37:5: warning: excess elements in scalar initializer
+     0b0000111111100000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:37:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:38:5: warning: excess elements in scalar initializer
+     0b0000110000110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:38:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:39:5: warning: excess elements in scalar initializer
+     0b0000111111110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:39:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:40:5: warning: excess elements in scalar initializer
+     0b0000111011110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:40:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:30:8: warning: excess elements in scalar initializer
+   },   {  //----PCDEGFAB---- @ DIS2 + .
+        ^
+../Core/Src/sct.c:30:8: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:41:3: warning: braces around scalar initializer
+   },   {    //PCDE--------GFAB @ DIS3
+   ^
+../Core/Src/sct.c:41:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:42:5: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     0b0111000000000111 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:42:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:43:5: warning: excess elements in scalar initializer
+     0b0100000000000001 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:43:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:44:5: warning: excess elements in scalar initializer
+     0b0011000000001011 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:44:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:45:5: warning: excess elements in scalar initializer
+     0b0110000000001011 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:45:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:46:5: warning: excess elements in scalar initializer
+     0b0100000000001101 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:46:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:47:5: warning: excess elements in scalar initializer
+     0b0110000000001110 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:47:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:48:5: warning: excess elements in scalar initializer
+     0b0111000000001110 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:48:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:49:5: warning: excess elements in scalar initializer
+     0b0100000000000011 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:49:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:50:5: warning: excess elements in scalar initializer
+     0b0111000000001111 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:50:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:51:5: warning: excess elements in scalar initializer
+     0b0110000000001111 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:51:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:41:8: warning: excess elements in scalar initializer
+   },   {    //PCDE--------GFAB @ DIS3
+        ^
+../Core/Src/sct.c:41:8: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:52:3: warning: braces around scalar initializer
+   },  {   //----43215678---- @ DIS3
+   ^
+../Core/Src/sct.c:52:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:54:5: warning: excess elements in scalar initializer
+     0b0000000100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:54:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:55:5: warning: excess elements in scalar initializer
+     0b0000001100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:55:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:56:5: warning: excess elements in scalar initializer
+     0b0000011100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:56:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:57:5: warning: excess elements in scalar initializer
+     0b0000111100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:57:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:58:5: warning: excess elements in scalar initializer
+     0b0000111110000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:58:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:59:5: warning: excess elements in scalar initializer
+     0b0000111111000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:59:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:60:5: warning: excess elements in scalar initializer
+     0b0000111111100000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:60:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:61:5: warning: excess elements in scalar initializer
+     0b0000111111110000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:61:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:62:5: warning: excess elements in scalar initializer
+     0b0000000000000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:62:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:52:7: warning: excess elements in scalar initializer
+   },  {   //----43215678---- @ DIS3
+       ^
+../Core/Src/sct.c:52:7: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:72:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/sct.c:80:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/sct.c:106:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+In file included from ../Core/Src/sct.c:8:0:
+../Core/Inc/main.h:59:9: error: old-style parameter declarations in prototyped function definition
+ int16_t get_ds18b20(void)
+         ^~~~~~~~~~~
+../Core/Src/sct.c:117:1: error: expected '{' at end of input
+ }
+ ^
+../Core/Src/sct.c:117:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [Core/Src/subdir.mk:43: Core/Src/sct.o] Error 1
+../Core/Src/stm32f0xx_hal_msp.c: In function 'get_ds18b20':
+../Core/Src/stm32f0xx_hal_msp.c:65:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:87:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:120:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:148:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:184:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:204:1: error: expected '{' at end of input
+ }
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:204:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [Core/Src/subdir.mk:45: Core/Src/stm32f0xx_hal_msp.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:01:36 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/1wire.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/1wire.d" -MT"Core/Src/1wire.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/1wire.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+In file included from ../Core/Src/1wire.c:10:0:
+../Core/Inc/1wire.h:19:1: error: expected ',' or ';' before 'inline'
+ inline static void _delay_us(volatile uint32_t micros)
+ ^~~~~~
+../Core/Src/1wire.c: In function 'OWReset':
+../Core/Inc/1wire.h:73:17: warning: implicit declaration of function '_delay_us' [-Wimplicit-function-declaration]
+ #define DELAY_H _delay_us(510)
+                 ^
+../Core/Src/1wire.c:32:5: note: in expansion of macro 'DELAY_H'
+     DELAY_H;
+     ^~~~~~~
+make: *** [Core/Src/subdir.mk:39: Core/Src/1wire.o] Error 1
+make: *** Waiting for unfinished jobs....
+In file included from ../Core/Src/main.c:26:0:
+../Core/Inc/1wire.h:19:1: error: expected ',' or ';' before 'inline'
+ inline static void _delay_us(volatile uint32_t micros)
+ ^~~~~~
+../Core/Src/main.c:323:9: warning: always_inline function might not be inlinable [-Wattributes]
+ int16_t get_ds18b20(void)
+         ^~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+../Core/Src/sct.c: In function 'get_ds18b20':
+../Core/Src/sct.c:18:23: error: storage class specified for parameter 'reg_values'
+ static const uint32_t reg_values[4][10] = {
+                       ^~~~~~~~~~
+../Core/Src/stm32f0xx_hal_msp.c: In function 'get_ds18b20':
+../Core/Src/stm32f0xx_hal_msp.c:65:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:87:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:120:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:148:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:184:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:204:1: error: expected '{' at end of input
+ }
+ ^
+../Core/Src/stm32f0xx_hal_msp.c:204:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [Core/Src/subdir.mk:45: Core/Src/stm32f0xx_hal_msp.o] Error 1
+../Core/Src/sct.c:18:1: error: parameter 'reg_values' is initialized
+ static const uint32_t reg_values[4][10] = {
+ ^~~~~~
+../Core/Src/sct.c:19:3: warning: braces around scalar initializer
+   {    //PCDE--------GFAB @ DIS1
+   ^
+../Core/Src/sct.c:19:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:20:5: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     0b0111000000000111 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:20:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:21:5: warning: excess elements in scalar initializer
+     0b0100000000000001 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:21:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:22:5: warning: excess elements in scalar initializer
+     0b0011000000001011 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:22:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:23:5: warning: excess elements in scalar initializer
+     0b0110000000001011 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:23:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:24:5: warning: excess elements in scalar initializer
+     0b0100000000001101 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:24:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:25:5: warning: excess elements in scalar initializer
+     0b0110000000001110 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:25:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:26:5: warning: excess elements in scalar initializer
+     0b0111000000001110 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:26:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:27:5: warning: excess elements in scalar initializer
+     0b0100000000000011 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:27:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:28:5: warning: excess elements in scalar initializer
+     0b0111000000001111 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:28:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:29:5: warning: excess elements in scalar initializer
+     0b0110000000001111 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:29:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:30:3: warning: braces around scalar initializer
+   },   {  //----PCDEGFAB---- @ DIS2 + .
+   ^
+../Core/Src/sct.c:30:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:31:5: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     0b0000111101110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:31:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:32:5: warning: excess elements in scalar initializer
+     0b0000110000010000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:32:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:33:5: warning: excess elements in scalar initializer
+     0b0000101110110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:33:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:34:5: warning: excess elements in scalar initializer
+     0b0000111010110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:34:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:35:5: warning: excess elements in scalar initializer
+     0b0000110011010000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:35:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:36:5: warning: excess elements in scalar initializer
+     0b0000111011100000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:36:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:37:5: warning: excess elements in scalar initializer
+     0b0000111111100000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:37:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:38:5: warning: excess elements in scalar initializer
+     0b0000110000110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:38:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:39:5: warning: excess elements in scalar initializer
+     0b0000111111110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:39:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:40:5: warning: excess elements in scalar initializer
+     0b0000111011110000 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:40:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:30:8: warning: excess elements in scalar initializer
+   },   {  //----PCDEGFAB---- @ DIS2 + .
+        ^
+../Core/Src/sct.c:30:8: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:41:3: warning: braces around scalar initializer
+   },   {    //PCDE--------GFAB @ DIS3
+   ^
+../Core/Src/sct.c:41:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:42:5: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
+     0b0111000000000111 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:42:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:43:5: warning: excess elements in scalar initializer
+     0b0100000000000001 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:43:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:44:5: warning: excess elements in scalar initializer
+     0b0011000000001011 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:44:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:45:5: warning: excess elements in scalar initializer
+     0b0110000000001011 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:45:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:46:5: warning: excess elements in scalar initializer
+     0b0100000000001101 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:46:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:47:5: warning: excess elements in scalar initializer
+     0b0110000000001110 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:47:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:48:5: warning: excess elements in scalar initializer
+     0b0111000000001110 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:48:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:49:5: warning: excess elements in scalar initializer
+     0b0100000000000011 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:49:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:50:5: warning: excess elements in scalar initializer
+     0b0111000000001111 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:50:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:51:5: warning: excess elements in scalar initializer
+     0b0110000000001111 << 0,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:51:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:41:8: warning: excess elements in scalar initializer
+   },   {    //PCDE--------GFAB @ DIS3
+        ^
+../Core/Src/sct.c:41:8: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:52:3: warning: braces around scalar initializer
+   },  {   //----43215678---- @ DIS3
+   ^
+../Core/Src/sct.c:52:3: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:54:5: warning: excess elements in scalar initializer
+     0b0000000100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:54:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:55:5: warning: excess elements in scalar initializer
+     0b0000001100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:55:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:56:5: warning: excess elements in scalar initializer
+     0b0000011100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:56:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:57:5: warning: excess elements in scalar initializer
+     0b0000111100000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:57:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:58:5: warning: excess elements in scalar initializer
+     0b0000111110000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:58:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:59:5: warning: excess elements in scalar initializer
+     0b0000111111000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:59:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:60:5: warning: excess elements in scalar initializer
+     0b0000111111100000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:60:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:61:5: warning: excess elements in scalar initializer
+     0b0000111111110000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:61:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:62:5: warning: excess elements in scalar initializer
+     0b0000000000000000 << 16,
+     ^~~~~~~~~~~~~~~~~~
+../Core/Src/sct.c:62:5: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:52:7: warning: excess elements in scalar initializer
+   },  {   //----43215678---- @ DIS3
+       ^
+../Core/Src/sct.c:52:7: note: (near initialization for 'reg_values')
+../Core/Src/sct.c:72:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/sct.c:80:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+../Core/Src/sct.c:106:1: error: expected '=', ',', ';', 'asm' or '__attribute__' before '{' token
+ {
+ ^
+In file included from ../Core/Src/sct.c:8:0:
+../Core/Inc/main.h:59:9: error: old-style parameter declarations in prototyped function definition
+ int16_t get_ds18b20(void)
+         ^~~~~~~~~~~
+../Core/Src/sct.c:117:1: error: expected '{' at end of input
+ }
+ ^
+../Core/Src/sct.c:117:1: warning: control reaches end of non-void function [-Wreturn-type]
+ }
+ ^
+make: *** [Core/Src/subdir.mk:43: Core/Src/sct.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:02:37 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/1wire.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/1wire.d" -MT"Core/Src/1wire.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/1wire.o"
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc "../Core/Src/sct.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/sct.d" -MT"Core/Src/sct.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/sct.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_hal_msp.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_hal_msp.d" -MT"Core/Src/stm32f0xx_hal_msp.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_hal_msp.o"
+arm-none-eabi-gcc "../Core/Src/stm32f0xx_it.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/stm32f0xx_it.d" -MT"Core/Src/stm32f0xx_it.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/stm32f0xx_it.o"
+arm-none-eabi-gcc -o "CV6.elf" @"objects.list"   -mcpu=cortex-m0 -T"/home/martin/MMIA/CV6/CV6/STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV6.elf
+ 
+arm-none-eabi-objdump -h -S  CV6.elf  > "CV6.list"
+arm-none-eabi-objcopy  -O binary  CV6.elf  "CV6.bin"
+arm-none-eabi-size   CV6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13728	     20	   1764	  15512	   3c98	CV6.elf
+Finished building: default.size.stdout
+ 
+Finished building: CV6.bin
+Finished building: CV6.list
+ 
+ 
+19:11:13 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:125:4: error: 'tick' undeclared (first use in this function); did you mean 'uwTick'?
+    tick=HAL_GetTick();
+    ^~~~
+    uwTick
+../Core/Src/main.c:125:4: note: each undeclared identifier is reported only once for each function it appears in
+../Core/Src/main.c:137:32: error: 'LED2_Port' undeclared (first use in this function); did you mean 'LED2_Pin'?
+    HAL_GPIO_WritePin(LED2_Pin, LED2_Port,1);
+                                ^~~~~~~~~
+                                LED2_Pin
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:84:36: warning: passing argument 1 of 'HAL_GPIO_WritePin' makes pointer from integer without a cast [-Wint-conversion]
+ #define GPIO_PIN_0                 ((uint16_t)0x0001U)  /* Pin 0 selected    */
+                                    ^
+../Core/Inc/main.h:78:18: note: in expansion of macro 'GPIO_PIN_0'
+ #define LED2_Pin GPIO_PIN_0
+                  ^~~~~~~~~~
+../Core/Src/main.c:137:22: note: in expansion of macro 'LED2_Pin'
+    HAL_GPIO_WritePin(LED2_Pin, LED2_Port,1);
+                      ^~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:268:19: note: expected 'GPIO_TypeDef * {aka struct <anonymous> *}' but argument is of type 'short unsigned int'
+ void              HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+                   ^~~~~~~~~~~~~~~~~
+../Core/Src/main.c:145:32: error: 'LED1_Port' undeclared (first use in this function); did you mean 'LED2_Port'?
+    HAL_GPIO_WritePin(LED1_Pin, LED1_Port,1);
+                                ^~~~~~~~~
+                                LED2_Port
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:88:36: warning: passing argument 1 of 'HAL_GPIO_WritePin' makes pointer from integer without a cast [-Wint-conversion]
+ #define GPIO_PIN_4                 ((uint16_t)0x0010U)  /* Pin 4 selected    */
+                                    ^
+../Core/Inc/main.h:74:18: note: in expansion of macro 'GPIO_PIN_4'
+ #define LED1_Pin GPIO_PIN_4
+                  ^~~~~~~~~~
+../Core/Src/main.c:145:22: note: in expansion of macro 'LED1_Pin'
+    HAL_GPIO_WritePin(LED1_Pin, LED1_Port,1);
+                      ^~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:268:19: note: expected 'GPIO_TypeDef * {aka struct <anonymous> *}' but argument is of type 'short unsigned int'
+ void              HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+                   ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:12:15 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:125:4: error: 'tick' undeclared (first use in this function); did you mean 'uwTick'?
+    tick=HAL_GetTick();
+    ^~~~
+    uwTick
+../Core/Src/main.c:125:4: note: each undeclared identifier is reported only once for each function it appears in
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:84:36: warning: passing argument 1 of 'HAL_GPIO_WritePin' makes pointer from integer without a cast [-Wint-conversion]
+ #define GPIO_PIN_0                 ((uint16_t)0x0001U)  /* Pin 0 selected    */
+                                    ^
+../Core/Inc/main.h:78:18: note: in expansion of macro 'GPIO_PIN_0'
+ #define LED2_Pin GPIO_PIN_0
+                  ^~~~~~~~~~
+../Core/Src/main.c:137:22: note: in expansion of macro 'LED2_Pin'
+    HAL_GPIO_WritePin(LED2_Pin, LED2_GPIO_Port,1);
+                      ^~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:268:19: note: expected 'GPIO_TypeDef * {aka struct <anonymous> *}' but argument is of type 'short unsigned int'
+ void              HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+                   ^~~~~~~~~~~~~~~~~
+In file included from ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:119:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:30,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h:29,
+                 from ../Core/Inc/stm32f0xx_hal_conf.h:189,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h:532:29: warning: passing argument 2 of 'HAL_GPIO_WritePin' makes integer from pointer without a cast [-Wint-conversion]
+ #define GPIOB               ((GPIO_TypeDef *) GPIOB_BASE)
+                             ^
+../Core/Inc/main.h:79:24: note: in expansion of macro 'GPIOB'
+ #define LED2_GPIO_Port GPIOB
+                        ^~~~~
+../Core/Src/main.c:137:32: note: in expansion of macro 'LED2_GPIO_Port'
+    HAL_GPIO_WritePin(LED2_Pin, LED2_GPIO_Port,1);
+                                ^~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:268:19: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'GPIO_TypeDef * {aka struct <anonymous> *}'
+ void              HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+                   ^~~~~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:88:36: warning: passing argument 1 of 'HAL_GPIO_WritePin' makes pointer from integer without a cast [-Wint-conversion]
+ #define GPIO_PIN_4                 ((uint16_t)0x0010U)  /* Pin 4 selected    */
+                                    ^
+../Core/Inc/main.h:74:18: note: in expansion of macro 'GPIO_PIN_4'
+ #define LED1_Pin GPIO_PIN_4
+                  ^~~~~~~~~~
+../Core/Src/main.c:145:22: note: in expansion of macro 'LED1_Pin'
+    HAL_GPIO_WritePin(LED1_Pin, LED1_GPIO_Port,1);
+                      ^~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:268:19: note: expected 'GPIO_TypeDef * {aka struct <anonymous> *}' but argument is of type 'short unsigned int'
+ void              HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+                   ^~~~~~~~~~~~~~~~~
+In file included from ../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f0xx.h:119:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_def.h:30,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_rcc.h:29,
+                 from ../Core/Inc/stm32f0xx_hal_conf.h:189,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/CMSIS/Device/ST/STM32F0xx/Include/stm32f030x8.h:531:29: warning: passing argument 2 of 'HAL_GPIO_WritePin' makes integer from pointer without a cast [-Wint-conversion]
+ #define GPIOA               ((GPIO_TypeDef *) GPIOA_BASE)
+                             ^
+../Core/Inc/main.h:75:24: note: in expansion of macro 'GPIOA'
+ #define LED1_GPIO_Port GPIOA
+                        ^~~~~
+../Core/Src/main.c:145:32: note: in expansion of macro 'LED1_GPIO_Port'
+    HAL_GPIO_WritePin(LED1_Pin, LED1_GPIO_Port,1);
+                                ^~~~~~~~~~~~~~
+In file included from ../Core/Inc/stm32f0xx_hal_conf.h:193:0,
+                 from ../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h:30,
+                 from ../Core/Inc/main.h:31,
+                 from ../Core/Src/main.c:22:
+../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_gpio.h:268:19: note: expected 'uint16_t {aka short unsigned int}' but argument is of type 'GPIO_TypeDef * {aka struct <anonymous> *}'
+ void              HAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, GPIO_PinState PinState);
+                   ^~~~~~~~~~~~~~~~~
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:13:54 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:125:4: error: 'tick' undeclared (first use in this function); did you mean 'uwTick'?
+    tick=HAL_GetTick();
+    ^~~~
+    uwTick
+../Core/Src/main.c:125:4: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Core/Src/subdir.mk:41: Core/Src/main.o] Error 1
+"make -j4 all" terminated with exit code 2. Build might be incomplete.
+19:14:19 **** Incremental Build of configuration Debug for project CV6 ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m0 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F030x8 -DDEBUG -c -I../Drivers/STM32F0xx_HAL_Driver/Inc -I../Drivers/CMSIS/Include -I../Core/Inc -I../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F0xx/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "CV6.elf" @"objects.list"   -mcpu=cortex-m0 -T"/home/martin/MMIA/CV6/CV6/STM32F030R8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CV6.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: CV6.elf
+ 
+arm-none-eabi-objdump -h -S  CV6.elf  > "CV6.list"
+arm-none-eabi-objcopy  -O binary  CV6.elf  "CV6.bin"
+arm-none-eabi-size   CV6.elf 
+   text	   data	    bss	    dec	    hex	filename
+  13980	     24	   1760	  15764	   3d94	CV6.elf
+Finished building: default.size.stdout
+Finished building: CV6.bin
+ 
+ 
+Finished building: CV6.list
+ 
