@@ -115,8 +115,8 @@ int main(void)
 
 		/* USER CODE BEGIN 3 */
 		int16_t temp_18b20;
-		uint32_t tick;
-		static enum { SHOW_DS, SHOW_NTC, SHOW_NULL } state = SHOW_NULL;
+		static enum { SHOW_DS, SHOW_NTC } state = SHOW_NTC;
+
 		temp_18b20 = get_ds18b20();
 		// obsluha tlacitek
 		if (HAL_GPIO_ReadPin(S2_GPIO_Port,S2_Pin)==0)
@@ -134,26 +134,36 @@ int main(void)
 		if (state==SHOW_NTC) //S1
 		{
 			sct_value(ADC_value[HAL_ADC_GetValue(&hadc)],0);
-			HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,1);
-			if (HAL_GetTick()>tick+PAUSE) state=SHOW_NULL;
-
+			HAL_GPIO_WritePin(LED2_Pin, LED2_Port,1);
+			if (HAL_GetTick()>tick+PAUSE) state=SHOW_DS;
 		}
 		else if (state == SHOW_DS) //S2
 		{
 
 			if (temp_18b20!=DS_ERROR) sct_value(temp_18b20,0);
 			else sct_value(0,8);
-			HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,1);
-			if (HAL_GetTick()>tick+PAUSE) state=SHOW_NULL;
+			HAL_GPIO_WritePin(LED1_Pin, LED1_Port,1);
+			if (HAL_GetTick()>tick+PAUSE) state=SHOW_NTC;
+		}
+		else state = SHOW_NTC;
 
-		}
-		else if (state == SHOW_NULL)
-		{
-			HAL_GPIO_WritePin(LED2_GPIO_Port,LED2_Pin,0);
-			HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,0);
-			sct_value(0,0);
-		}
-		else state = SHOW_NULL;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	}
 	/* USER CODE END 3 */
