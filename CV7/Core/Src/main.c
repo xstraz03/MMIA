@@ -425,8 +425,8 @@ void StartVisualTask(void const * argument)
 		{ // LED2 -> msg >200
 			if (msg > 200)
 			{
+				HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, 0);
 				HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, 1);
-				HAL_GPIO_WritePin(LED1_GPIO_Port	, LED1_Pin, 0);
 			}
 			//LED1 -> msg<-200
 			else if (msg < -200)

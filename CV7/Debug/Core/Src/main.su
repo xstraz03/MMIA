@@ -9,5 +9,5 @@ main.c:343:13:MX_GPIO_Init	56	static
 main.c:397:6:StartDefaultTask	16	static
 main.c:415:6:StartVisualTask	24	static
 main.c:451:6:StartAcceleroTask	40	static
-main.c:515:6:HAL_TIM_PeriodElapsedCallback	16	static
-main.c:532:6:Error_Handler	8	static
+main.c:513:6:HAL_TIM_PeriodElapsedCallback	16	static
+main.c:530:6:Error_Handler	8	static

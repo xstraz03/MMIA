@@ -1725,17 +1725,17 @@ void StartVisualTask(void const * argument)
  8000abe:	2bc8      	cmp	r3, #200	; 0xc8
  8000ac0:	dd0d      	ble.n	8000ade <StartVisualTask+0x46>
 			{
+				HAL_GPIO_WritePin(LED1_GPIO_Port, LED1_Pin, 0);
+ 8000ac2:	2390      	movs	r3, #144	; 0x90
+ 8000ac4:	05db      	lsls	r3, r3, #23
+ 8000ac6:	2200      	movs	r2, #0
+ 8000ac8:	2110      	movs	r1, #16
+ 8000aca:	0018      	movs	r0, r3
+ 8000acc:	f000 fcd6 	bl	800147c <HAL_GPIO_WritePin>
 				HAL_GPIO_WritePin(LED2_GPIO_Port, LED2_Pin, 1);
- 8000ac2:	4b13      	ldr	r3, [pc, #76]	; (8000b10 <StartVisualTask+0x78>)
- 8000ac4:	2201      	movs	r2, #1
- 8000ac6:	2101      	movs	r1, #1
- 8000ac8:	0018      	movs	r0, r3
- 8000aca:	f000 fcd7 	bl	800147c <HAL_GPIO_WritePin>
-				HAL_GPIO_WritePin(LED1_GPIO_Port	, LED1_Pin, 0);
- 8000ace:	2390      	movs	r3, #144	; 0x90
- 8000ad0:	05db      	lsls	r3, r3, #23
- 8000ad2:	2200      	movs	r2, #0
- 8000ad4:	2110      	movs	r1, #16
+ 8000ad0:	4b0f      	ldr	r3, [pc, #60]	; (8000b10 <StartVisualTask+0x78>)
+ 8000ad2:	2201      	movs	r2, #1
+ 8000ad4:	2101      	movs	r1, #1
  8000ad6:	0018      	movs	r0, r3
  8000ad8:	f000 fcd0 	bl	800147c <HAL_GPIO_WritePin>
  8000adc:	e012      	b.n	8000b04 <StartVisualTask+0x6c>
