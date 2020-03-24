@@ -389,6 +389,8 @@ typedef union{
   uint8_t                            byte;
 } lis2dw12_reg_t;
 
+
+
 /**
   * @}
   *

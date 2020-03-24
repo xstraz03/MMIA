@@ -33,6 +33,11 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
+typedef union{
+  int16_t i16bit[3];
+  uint8_t u8bit[6];
+} axis3bit16_t;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -72,18 +77,11 @@ void StartAcceleroTask(void const * argument);
 /* USER CODE BEGIN PFP */
 static int32_t platform_write(void *handle, uint8_t reg, uint8_t *bufp, uint16_t len);
 static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp, uint16_t len);
-/*typedef struct {
-.write_reg = platform_write,
-.read_reg = platform_read,
-.handle = &hi2c1,
-}lis2dw12_ctx_t ;*/
-typedef struct {
-  /** Component mandatory fields **/
-  lis2dw12_write_reg  platform_write;
-  lis2dw12_read_reg   platform_read;
-  /** Customizable optional pointer **/
-  void &hi2c1;
-} lis2dw12_ctx_t;
+static stmdev_ctx_t lis2dw12 = {
+		.write_reg = platform_write,
+		.read_reg = platform_read,
+		.handle = &hi2c1,
+};
 
 
 
@@ -122,6 +120,13 @@ static int32_t platform_read(void *handle, uint8_t reg, uint8_t *bufp, uint16_t 
 int main(void)
 {
 	/* USER CODE BEGIN 1 */
+
+
+	lis2dw12_full_scale_set(&lis2dw12, LIS2DW12_2g);
+	lis2dw12_power_mode_set(&lis2dw12, LIS2DW12_CONT_LOW_PWR_LOW_NOISE_2);
+	lis2dw12_block_data_update_set(&lis2dw12, PROPERTY_ENABLE);
+	lis2dw12_fifo_mode_set(&lis2dw12, LIS2DW12_STREAM_MODE); // enable continuous FIFO
+	lis2dw12_data_rate_set(&lis2dw12, LIS2DW12_XL_ODR_25Hz); // enable part from power-down
 
 	/* USER CODE END 1 */
 
@@ -447,27 +452,47 @@ void StartAcceleroTask(void const * argument)
 {
 	/* USER CODE BEGIN StartAcceleroTask */
 	/* Infinite loop */
+
+	uint8_t whoamI = 0;
+	lis2dw12_device_id_get(&lis2dw12, &whoamI);
+	printf("LIS2DW12_ID %s\n", (whoamI == LIS2DW12_ID) ? "OK" : "FAIL");
+
 	for(;;)
 	{
+
+		uint8_t samples,i;
+		axis3bit16_t data_raw_acceleration;
+		lis2dw12_fifo_data_level_get(&lis2dw12, &samples);
+		for (uint8_t i = 0; i < samples; i++)
+		{
+		// Read acceleration data
+		lis2dw12_acceleration_raw_get(&lis2dw12, data_raw_acceleration.u8bit);
+		}
+		osDelay(50);// delay 50ms
+		i++;
+		xQueueSend(xVisualQueueHandle,&data_raw_acceleration.i16bit[0],0);
+		if (i==20) // co 1s printf
+		{
+			printf("X=%d Y=%d Z=%d\n", data_raw_acceleration.i16bit[0],
+				data_raw_acceleration.i16bit[1], data_raw_acceleration.i16bit[2]);
+			i=0;
+		}
+
+
+
+
+
+
+
+		/* DEMO
 		int16_t msg;
-
-
-		// Check device ID
-		uint8_t whoamI = 0;
-		lis2dw12_device_id_get(&lis2dw12, &whoamI);
-		printf("LIS2DW12_ID %s\n", (whoamI == LIS2DW12_ID) ? "OK" : "FAIL");
-
-		/*
-
 		int16_t msg1[]={-500,0,500,0};
 		static uint8_t i = 0;
 		msg=msg1[i];
-
-
 		xQueueSend(xVisualQueueHandle, &msg, 0);
 
 		i++;
-		if (i==3) i=0;
+		if (i==4) i=0;
 
 		osDelay(300);
 		// osDelay(1);
