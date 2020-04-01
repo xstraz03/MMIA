@@ -124,11 +124,11 @@ int main(void)
 			if (key==pass[i]) i++;
 			else i=0;
 			if (i==5)
-				{
+			{
 				state=LED_ON;
 				tick=HAL_GetTick();
 				i=0;
-				}
+			}
 		}
 		key=-1;
 
@@ -137,11 +137,11 @@ int main(void)
 			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_SET);
 			if (HAL_GetTick()>tick+PAUSE) state=LED_OFF;
 		}
-	   else if (state==LED_OFF)
-	   {
+		else if (state==LED_OFF)
+		{
 			HAL_GPIO_WritePin(LD1_GPIO_Port, LD1_Pin, GPIO_PIN_RESET);
 
-	   }
+		}
 
 
 
