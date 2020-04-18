@@ -86,10 +86,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Middlewares/Third_Party/LwIP/system/arch/sys_arch.h \
  ../LWIP/Target/ethernetif.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h \
- ../Core/Src/tcpecho.c \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/api.h \
- ../Middlewares/Third_Party/LwIP/src/include/lwip/netbuf.h \
- ../Core/Src/telnet.c \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/httpd.h \
  ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/httpd_opts.h
 
@@ -268,14 +264,6 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../LWIP/Target/ethernetif.h:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h:
-
-../Core/Src/tcpecho.c:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/api.h:
-
-../Middlewares/Third_Party/LwIP/src/include/lwip/netbuf.h:
-
-../Core/Src/telnet.c:
 
 ../Middlewares/Third_Party/LwIP/src/include/lwip/apps/httpd.h:
 

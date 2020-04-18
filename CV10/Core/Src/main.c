@@ -22,8 +22,7 @@
 #include "main.h"
 #include "cmsis_os.h"
 #include "lwip.h"
-#include "tcpecho.c"
-#include "telnet.c"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "lwip/apps/httpd.h"
@@ -63,6 +62,8 @@ void StartDefaultTask(void const * argument);
 
 /* USER CODE BEGIN PFP */
 extern void tcpecho_init(void);
+extern void telnet_init(void);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -133,9 +134,12 @@ int main(void)
 
   /* Initialize tcp echo server */
   tcpecho_init();
+
   /* Initialize HTTP server */
   httpd_init();
 
+  /* Initialize telnet server */
+  telnet_init();
 
   /* USER CODE END RTOS_THREADS */
 
@@ -317,6 +321,8 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+
 
 /* USER CODE END 4 */
 
