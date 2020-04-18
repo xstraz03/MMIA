@@ -122,7 +122,6 @@ static void telnet_process_command(char *cmd, struct netconn *conn)
 		token = strtok_r(cmd, " ",&saveptr);
 		static char LED1_status[CHAR_BUFFER], LED2_status[CHAR_BUFFER],LED3_status[CHAR_BUFFER];
 
-
 		if(HAL_GPIO_ReadPin(LD1_GPIO_Port, LD1_Pin)==1) strcpy(LED1_status, "Zapnuto");
 		else strcpy(LED1_status, "Vypnuto");
 
@@ -131,35 +130,12 @@ static void telnet_process_command(char *cmd, struct netconn *conn)
 		if(HAL_GPIO_ReadPin(LD3_GPIO_Port, LD3_Pin)==1) strcpy(LED3_status, "Zapnuto");
 		else strcpy(LED3_status, "Vypnuto");
 
-
-
-
 		sprintf(s, "STATUS: LED1 %s LED2 %s LED3 %s", LED1_status, LED2_status,LED3_status);
-
-
-
-
-
 		netconn_write(conn, s, strlen(s), NETCONN_COPY);
-
-
-
-
-
 
 	}
 
-
-
 }
-
-
-
-
-
-
-
-
 
 static void telnet_byte_available(uint8_t c, struct netconn *conn)
 {
@@ -172,9 +148,6 @@ static void telnet_byte_available(uint8_t c, struct netconn *conn)
 		cnt = 0;
 	}
 }
-
-
-
 
 
 /*-----------------------------------------------------------------------------------*/
@@ -216,11 +189,7 @@ static void telnet_thread(void *arg)
 						{
 
 							netbuf_data(buf, (void**)&data, &len);
-							while (len--) telnet_byte_available((uintptr_t)data++, newconn);
-
-
-
-
+							while (len--) telnet_byte_available((uintptr_t)data++, newconn); // nešlo s * -> uintptr_t
 
 							// netbuf_data(buf, &data, &len);
 							//netconn_write(newconn, data, len, NETCONN_COPY);
